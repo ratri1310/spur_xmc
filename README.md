@@ -1,8 +1,8 @@
 # SPUR-XMC: Context-Adaptive Spurious Correlation Mitigation for Extreme Multi-Label Classification of Scientific Literature
-# PubMedBERT + Spurious Translation Layer
-## Spurious Correlation Debiasing for Biomedical Multi-Label Classification
+# PubMedBERT + Context-Adaptive Spurious Correlation Translation Layer
 
-This repository contains the implementation of the Spurious Translation Layer (v9) for MeSH multi-label classification of PubMed abstracts. The model uses a frozen PubMedBERT encoder with a learned gated translation layer that identifies and corrects spurious directions in the representation space.
+
+This repository contains the implementation of the Spurious Translation Layer for MeSH multi-label classification of PubMed abstracts. The model uses a frozen PubMedBERT encoder with a learned gated translation layer that identifies and corrects spurious directions in the representation space.
 
 ---
 
@@ -182,7 +182,7 @@ All outputs are saved to `--output_dir`:
 
 ## Metrics Reported
 
-- **nDCG@5** — primary metric, used for model selection
+- **nDCG@1,3,5** — primary metric, used for model selection
 - **P@1, P@3, P@5** — precision at k
 - **MRR** — mean reciprocal rank
 - **mAP** — mean average precision
