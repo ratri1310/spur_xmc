@@ -1,0 +1,40 @@
+# Data directories
+kg/
+splits/
+datasets/
+
+# Model outputs and checkpoints
+runs/
+*.pt
+*.npy
+*.pkl
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Logs
+*.log
+
+# Mac metadata
+.DS_Store
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Virtual environments
+.env
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*.swp
