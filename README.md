@@ -19,7 +19,7 @@ BERT (frozen)
             z    = h - softplus(γ) * (s̃ ⊙ (h @ V.T)) @ V
     → HybridClassifier
         seen:   Linear(768 → num_seen)     (trainable)
-        unseen: cosine(query_adapter(z), label_embeddings) / τ
+
 ```
 
 ---
@@ -28,13 +28,6 @@ BERT (frozen)
 
 ```bash
 pip install -r requirements.txt
-```
-
-To generate `requirements.txt` from the current conda environment:
-
-```bash
-conda activate bert_gzsl
-pip list --format=freeze > requirements.txt
 ```
 
 Or use the provided `requirements.txt` directly.
@@ -74,13 +67,6 @@ mesh_id,pref_name
 D001234,Brain Diseases
 ```
 
-### Unseen Codes JSON (`unseen_codes_path`)
-A flat list of MeSH unique IDs held out as unseen labels:
-```json
-["D001234", "D005678"]
-```
-
----
 
 ## Training
 
@@ -138,15 +124,6 @@ TOKENIZERS_PARALLELISM=false python train_pubmedbert_mesh_tl_v9.py \
     --output_dir /path/to/runs/neurology_tl_v9
 ```
 
-### Tail-Label (rare labels only)
-```bash
-TOKENIZERS_PARALLELISM=false python train_pubmedbert_mesh_tl_v9.py \
-    --mode test --experiment tail --domain neurology \
-    --test_path           /path/to/splits/neurology/test_tail.json \
-    --tail_label_ids_path /path/to/splits/neurology/tail_label_ids.json \
-    --tail_mask_head_labels \
-    --output_dir /path/to/runs/neurology_tl_v9
-```
 
 Replace `neurology` with `immunology` or `embryology` as needed.
 
@@ -173,7 +150,7 @@ All outputs are saved to `--output_dir`:
 | File | Description |
 |---|---|
 | `best_model.pt` | Best checkpoint by validation nDCG@5 |
-| `label_maps.json` | Seen and unseen label index maps |
+| `label_maps.json` | label index maps |
 | `directions.npy` | Spurious direction matrix V [num_seen, 768] |
 | `test_results_supervised.json` | Supervised evaluation metrics |
 | `test_results_tail.json` | Tail-label evaluation metrics |
